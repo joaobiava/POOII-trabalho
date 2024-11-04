@@ -32,7 +32,7 @@ public class EstudanteDAO implements IEstudante, IConst {
     }
 
     public void delete(Estudante estudante) throws SQLException {
-        sql = "DELETE FROM Estudante WHERE estudante_id = ?";
+        sql = "DELETE FROM Estudante WHERE estudante_id ~* ?";
 
         try(Connection conexao = Conexao.getConexao(Conexao.stringDeConexao, Conexao.usuario, Conexao.senha);
         PreparedStatement pstmt = conexao.prepareStatement(sql)){

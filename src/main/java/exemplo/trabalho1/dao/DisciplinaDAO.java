@@ -65,7 +65,7 @@ public class DisciplinaDAO implements IConst{
     }
 
     public Disciplina consultarPorNome(String nome) throws SQLException {
-        sql = "select * from disciplina where nome = ?";
+        sql = "select * from disciplina where nome ~* ?";
 
         try(Connection conexao = Conexao.getConexao(Conexao.stringDeConexao, Conexao.usuario, Conexao.senha);
             PreparedStatement pstmt = conexao.prepareStatement(sql)){
