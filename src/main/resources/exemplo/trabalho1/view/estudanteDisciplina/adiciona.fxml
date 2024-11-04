@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/22"
+          fx:controller="exemplo.trabalho1.controller.estudanteDisciplina.EstudanteDisciplinaController"
+          prefHeight="600.0" prefWidth="600.0">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Campo de entrada para o ID do Estudante -->
+    <Label text="ID do Estudante:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <TextField fx:id="idInput" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+    <!-- ComboBox para seleção da Disciplina -->
+    <Label text="Selecione a Disciplina:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <ComboBox fx:id="disciplinaComboBox" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <!-- Botão para adicionar o estudante à disciplina -->
+    <Button text="Adicionar Estudante à Disciplina"
+            onAction="#btnAdicionarEstudanteADisciplina"
+            GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+</GridPane>

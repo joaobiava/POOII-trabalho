@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Font?>
+
+<GridPane prefHeight="600.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22" fx:controller="exemplo.trabalho1.controller.estudanteDisciplina.EstudanteDisciplinaController">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Seção de Estudante -->
+    <Label text="ID do Estudante:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <TextField fx:id="idInput" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+    <!-- Seção de Relacionamento Estudante-Disciplina -->
+    <Label text="Selecione a Disciplina:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <ComboBox fx:id="disciplinaComboBox" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+    <Button text="Remover Estudante da Disciplina" onAction="#btnRemoverEstudanteDaDisciplina" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+</GridPane>

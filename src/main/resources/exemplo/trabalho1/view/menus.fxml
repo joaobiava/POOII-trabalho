@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="exemplo.trabalho1.controller.MenusController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu text="Estudantes">
+                    <items>
+                        <MenuItem fx:id="menuEstudanteIncluir" onAction="#incluiOnAction" text="Inclui" />
+                        <MenuItem fx:id="menuEstudanteAltera" onAction="#alteraOnAction" text="Altera" />
+                        <MenuItem fx:id="menuEstudanteDelete" onAction="#deleteOnAction" text="Delete" />
+                        <MenuItem fx:id="menuEstudanteConsuta" onAction="#consultaOnAction" text="Consulta" />
+                    </items>
+                </Menu>
+                <Menu text="Disciplinas">
+                    <items>
+                        <MenuItem fx:id="menuDisciplinaInclui" onAction="#incluiDisciplinaOnAction" text="Inclui" />
+                        <MenuItem fx:id="menuDisciplinaAltera" onAction="#alteraDisciplinaOnAction" text="Alterar" />
+                        <MenuItem fx:id="menuDisciplinaDelete" onAction="#deleteDisciplinaOnAction" text="delete" />
+                        <MenuItem fx:id="menuDisciplinaConsulta" onAction="#consultaDisciplinaOnAction" text="consulta" />
+                    </items>
+                </Menu>
+                <Menu text="EstudanteDisciplinas">
+                    <items>
+                        <MenuItem fx:id="menuEstudanteDisciplinaInclui" onAction="#incluirEstudanteDisciplinaOnAction" text="Inclui" />
+                        <MenuItem fx:id="menuEstudanteDisciplinaAltera" onAction="#alterarEstudanteDisciplinaOnAction" text="Alterar" />
+                        <MenuItem fx:id="menuEstudanteDisciplinaConsulta" onAction="#consultarEstudanteDisciplinaOnAction" text="consulta" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <ImageView fitHeight="374.0" fitWidth="600.0">
+            <image>
+                <Image url="@../image/bobesponja.jpeg" />
+            </image>
+        </ImageView>
+    </children>
+</VBox>

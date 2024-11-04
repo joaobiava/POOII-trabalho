@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Font?>
+
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22" fx:controller="exemplo.trabalho1.controller.estudante.EstudanteController">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- ID do Estudante -->
+    <Label text="ID do Estudante:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <TextField fx:id="idInput" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+    <!-- Novo Nome -->
+    <Label text="Novo Nome:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="nomeInput" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <!-- Botão de Alterar Nome -->
+    <Button text="Alterar Nome" onAction="#btnAlterar" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+</GridPane>

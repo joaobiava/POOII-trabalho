@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="exemplo.trabalho1.controller.disciplina.DisciplinaController" spacing="15" alignment="CENTER">
+    <children>
+        <Label text="Delete Disciplina"/>
+
+        <TextField fx:id="disciplinaId" promptText="Enter Student ID"/>
+
+        <Button text="Delete" onAction="#btnDeletar"/>
+
+        <Label fx:id="statusLabel" text="" style="-fx-text-fill: #ff0000;"/>
+    </children>
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+</VBox>
