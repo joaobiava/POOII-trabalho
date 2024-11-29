@@ -5,8 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
@@ -15,8 +13,9 @@
     <children>
         <Label text="Consulta de Estudantes por Disciplina" style="-fx-font-size: 16px;"/>
 
-        <TableView fx:id="tabelaEstudantesDisciplinas" prefHeight="200" prefWidth="400">
+        <TableView fx:id="tabelaEstudantesDisciplinas" prefHeight="200" prefWidth="500">
             <columns>
+                <TableColumn fx:id="colunaDisciplinaId" text="ID Disciplina" prefWidth="100"/>
                 <TableColumn fx:id="colunaEstudanteId" text="ID Estudante" prefWidth="100"/>
                 <TableColumn fx:id="colunaEstudanteNome" text="Nome estudante" prefWidth="100" />
                 <TableColumn fx:id="colunaDisciplinaNome" text="Nome Disciplina" prefWidth="200"/>

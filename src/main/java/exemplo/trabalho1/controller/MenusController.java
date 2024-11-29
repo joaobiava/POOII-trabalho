@@ -15,40 +15,6 @@ import javafx.stage.Stage;
 
 public class MenusController {
     @FXML
-    private MenuItem menuEstudanteInclui;
-
-    @FXML
-    private MenuItem menuEstudanteAltera;
-
-    @FXML
-    private MenuItem menuEstudanteDelete;
-
-    @FXML
-    private MenuItem menuEstudanteConsulta;
-
-    @FXML
-    private MenuItem menuDisciplinaAltera;
-
-    @FXML
-    private MenuItem menuDisciplinaInclui;
-
-    @FXML
-    private MenuItem menuDisciplinaDelete;
-
-    @FXML
-    private MenuItem menuDisciplinaConsulta;
-
-    @FXML
-    private MenuItem telaVazia;
-
-    @FXML
-    private Stage stage;
-    @FXML
-    private Scene scene;
-    @FXML
-    private Parent root;
-
-    @FXML
     void alteraDisciplinaOnAction(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/exemplo/trabalho1/view/disciplina/alteraDisciplina.fxml"));
@@ -215,7 +181,7 @@ public class MenusController {
             Stage newStage = new Stage();
             Scene newScene = new Scene(root);
             newStage.setScene(newScene);
-            newStage.setTitle("Incluir Estudante na Disciplina");
+            newStage.setTitle("consultar Estudante na Disciplina");
             newStage.setResizable(false);
             newStage.show();
         } catch (IOException e) {
@@ -223,6 +189,4 @@ public class MenusController {
         }
 
     }
-
-
 }

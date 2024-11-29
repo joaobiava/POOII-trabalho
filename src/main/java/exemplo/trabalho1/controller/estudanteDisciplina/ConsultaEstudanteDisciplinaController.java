@@ -16,10 +16,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ConsultaEstudanteDisciplinaController {
-
-    @FXML
-    private TextField disciplinaIdField; // Campo de entrada para o ID da disciplina
-
     @FXML
     private TableView<EstudanteDisciplina> tabelaEstudantesDisciplinas; // Tabela para exibir relações Estudante-Disciplina
 
@@ -28,6 +24,9 @@ public class ConsultaEstudanteDisciplinaController {
 
     @FXML
     private TableColumn<EstudanteDisciplina, String> colunaEstudanteNome; // Coluna para o nome do estudante
+
+    @FXML
+    private TableColumn<EstudanteDisciplina, String> colunaDisciplinaId;
 
     @FXML
     private TableColumn<EstudanteDisciplina, String> colunaDisciplinaNome; // Coluna para o nome da disciplina
@@ -39,6 +38,11 @@ public class ConsultaEstudanteDisciplinaController {
         colunaDisciplinaNome.setCellValueFactory(dadoLinha -> {
             String disciplinaNome = dadoLinha.getValue().getDisciplina().getNome();
             return new SimpleStringProperty(disciplinaNome);
+        });
+
+        colunaDisciplinaId.setCellValueFactory(dadoLinha -> {
+            String disciplinaId = Integer.toString(dadoLinha.getValue().getDisciplina().getDisciplina_id());
+            return new SimpleStringProperty(disciplinaId);
         });
 
         colunaEstudanteNome.setCellValueFactory(dadoLinha -> {
@@ -63,25 +67,4 @@ public class ConsultaEstudanteDisciplinaController {
             e.printStackTrace();
         }
     }
-
-    @FXML
-    public void handleBuscarPorDisciplinaId() {
-        String disciplinaIdText = disciplinaIdField.getText();
-        if (disciplinaIdText.isEmpty()) {
-            return; // Tratamento de erro, caso o campo esteja vazio
-        }
-        try {
-            int disciplinaId = Integer.parseInt(disciplinaIdText);
-            List<EstudanteDisciplina> estudantes = estudanteDisciplinaDAO.listarEstudantesPorDisciplinaId(disciplinaId);
-            ObservableList<EstudanteDisciplina> observableEstudantes = FXCollections.observableArrayList(estudantes);
-            tabelaEstudantesDisciplinas.setItems(observableEstudantes);
-        } catch (NumberFormatException e) {
-            // Tratamento de erro para entrada inválida
-            System.out.println("ID da disciplina inválido");
-        } catch (SQLException e) {
-            // Tratamento de erro para problemas de banco de dados
-            e.printStackTrace();
-        }
-    }
-
 }

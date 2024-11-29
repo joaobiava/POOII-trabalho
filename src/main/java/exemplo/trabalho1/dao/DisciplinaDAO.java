@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DisciplinaDAO implements IConst{
+public class DisciplinaDAO implements IConst, IDisciplina{
     private String sql;
 
     public void inserir(Disciplina disciplina) throws SQLException {

@@ -52,23 +52,6 @@ public class ConsultaEstudanteController {
     }
 
     @FXML
-    private void handleBuscarPorId() {
-        try {
-            int estudanteId = Integer.parseInt(studentIdField.getText());
-            Estudante estudante = estudanteDAO.consultar(estudanteId);
-            if (estudante != null) {
-                tabelaEstudantes.setItems(FXCollections.observableArrayList(estudante));
-            } else {
-                tabelaEstudantes.setItems(FXCollections.observableArrayList());
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("ID inválido.");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
     private void handleBuscarPorNome() {
         try {
             String nome = (studentIdField.getText());

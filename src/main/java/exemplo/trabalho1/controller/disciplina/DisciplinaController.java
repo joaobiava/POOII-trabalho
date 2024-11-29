@@ -14,10 +14,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class DisciplinaController {
-
-    @FXML
-    private Button btnConf;
-
     @FXML
     private TextField txtNomEst;
 
@@ -31,23 +27,7 @@ public class DisciplinaController {
     private TextField disciplinaId;
 
     @FXML
-    private TextField disciplinaIdField;
-
-    @FXML
-    private TableView<Disciplina> tabelaEstudantes;
-
-    @FXML
-    private TableColumn<Disciplina, Integer> colunaId;
-
-    @FXML
-    private TableColumn<Disciplina, String> colunaNome;
-
-    private DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
-
-    @FXML
-    public void initialize() {
-
-    }
+    public void initialize() {}
 
     @FXML
     private void btnIncluir(ActionEvent event) {
@@ -113,52 +93,6 @@ public class DisciplinaController {
             alert.setHeaderText("Informação");
             alert.show();
             e1.printStackTrace();
-        }
-    }
-
-
-    @FXML
-    private void handleCarregarDisciplina() {
-        try {
-            List<Disciplina> estudantes = disciplinaDAO.listar(); // Método que lista todos os estudantes
-            ObservableList<Disciplina> observableEstudantes = FXCollections.observableArrayList(estudantes);
-            tabelaEstudantes.setItems(observableEstudantes);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void handleBuscarPorId() {
-        try {
-            int disciplinaId = Integer.parseInt(disciplinaIdField.getText());
-            Disciplina disciplina = disciplinaDAO.consultar(disciplinaId);
-            if (disciplina != null) {
-                tabelaEstudantes.setItems(FXCollections.observableArrayList(disciplina));
-            } else {
-                tabelaEstudantes.setItems(FXCollections.observableArrayList());
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("ID inválido.");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void handleBuscarPorNome() {
-        try {
-            String nome = (disciplinaIdField.getText());
-            Disciplina disciplina = disciplinaDAO.consultarPorNome(nome);
-            if (disciplina != null) {
-                tabelaEstudantes.setItems(FXCollections.observableArrayList(disciplina));
-            } else {
-                tabelaEstudantes.setItems(FXCollections.observableArrayList());
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Nome Inválio");
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 

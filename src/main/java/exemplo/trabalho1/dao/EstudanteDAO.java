@@ -32,7 +32,7 @@ public class EstudanteDAO implements IEstudante, IConst {
     }
 
     public void delete(Estudante estudante) throws SQLException {
-        sql = "DELETE FROM Estudante WHERE estudante_id ~* ?";
+        sql = "DELETE FROM Estudante WHERE estudante_id = ?";
 
         try(Connection conexao = Conexao.getConexao(Conexao.stringDeConexao, Conexao.usuario, Conexao.senha);
         PreparedStatement pstmt = conexao.prepareStatement(sql)){
@@ -63,7 +63,7 @@ public class EstudanteDAO implements IEstudante, IConst {
     }
 
     public Estudante consultarPorNome(String nome) throws SQLException {
-        sql = "select * from estudante where nome = ?";
+        sql = "select * from estudante where nome ~* ?";
 
         try(Connection conexao = Conexao.getConexao(Conexao.stringDeConexao, Conexao.usuario, Conexao.senha);
             PreparedStatement pstmt = conexao.prepareStatement(sql)){

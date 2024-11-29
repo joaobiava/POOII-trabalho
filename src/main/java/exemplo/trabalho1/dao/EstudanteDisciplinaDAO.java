@@ -11,7 +11,6 @@ import exemplo.trabalho1.model.EstudanteDisciplina;
 public class EstudanteDisciplinaDAO implements IConst {
     private String sql;
 
-    // Método para inserir uma relação entre Estudante e Disciplina
     public void inserir(EstudanteDisciplina estudanteDisciplina) throws SQLException {
         sql = "INSERT INTO estudante_disciplina (estudante_id, disciplina_id) VALUES (?, ?)";
 
@@ -23,7 +22,6 @@ public class EstudanteDisciplinaDAO implements IConst {
         }
     }
 
-    // Método para remover uma relação entre Estudante e Disciplina
     public void delete(EstudanteDisciplina estudanteDisciplina) throws SQLException {
         sql = "DELETE FROM estudante_disciplina WHERE estudante_id = ? AND disciplina_id = ?";
 
@@ -35,9 +33,10 @@ public class EstudanteDisciplinaDAO implements IConst {
         }
     }
 
-    // Método para listar todas as disciplinas associadas a um determinado estudante
     public List<Disciplina> listarDisciplinasPorEstudante(int estudanteId) throws SQLException {
-        sql = "SELECT d.* FROM disciplina d INNER JOIN estudante_disciplina ed ON d.disciplina_id = ed.disciplina_id WHERE ed.estudante_id = ?";
+        sql = "SELECT d.* FROM disciplina d " +
+                "INNER JOIN estudante_disciplina ed ON d.disciplina_id = ed.disciplina_id " +
+                "WHERE ed.estudante_id = ?";
 
         try (Connection conexao = Conexao.getConexao(Conexao.stringDeConexao, Conexao.usuario, Conexao.senha);
              PreparedStatement pstmt = conexao.prepareStatement(sql)) {
@@ -55,7 +54,6 @@ public class EstudanteDisciplinaDAO implements IConst {
         }
     }
 
-    // Método para listar todos os estudantes associados a uma determinada disciplina
     public List<Estudante> listarEstudantesPorDisciplina(int disciplinaId) throws SQLException {
         sql = "SELECT e.* FROM estudante e INNER JOIN estudante_disciplina ed ON e.estudante_id = ed.estudante_id WHERE ed.disciplina_id = ?";
 
@@ -75,7 +73,6 @@ public class EstudanteDisciplinaDAO implements IConst {
         }
     }
 
-    // Método para consultar a relação entre um estudante e uma disciplina específica
     public EstudanteDisciplina consultar(int estudanteId, int disciplinaId) throws SQLException {
         sql = "SELECT e.*, d.* FROM estudante e " +
                 "JOIN estudante_disciplina ed ON e.estudante_id = ed.estudante_id " +
@@ -103,7 +100,6 @@ public class EstudanteDisciplinaDAO implements IConst {
         }
     }
 
-    // Método para listar todas as relações entre Estudante e Disciplina
     public List<EstudanteDisciplina> listarTodos() throws SQLException {
         sql = "SELECT e.nome AS nomeEstudante, e.estudante_id, d.nome as nomeDisciplina, d.disciplina_id FROM estudante e " +
                 "JOIN estudante_disciplina ed ON e.estudante_id = ed.estudante_id " +
@@ -129,7 +125,6 @@ public class EstudanteDisciplinaDAO implements IConst {
         }
     }
 
-    // No EstudanteDisciplinaDAO
     public List<EstudanteDisciplina> listarEstudantesPorDisciplinaId(int disciplinaId) throws SQLException {
         String sql = "SELECT * FROM estudante_disciplina WHERE disciplina_id = ?";
         List<EstudanteDisciplina> estudantesDisciplinas = new ArrayList<>();
