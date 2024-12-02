@@ -22,19 +22,7 @@ import java.util.List;
 
 public class EstudanteDisciplinaController {
     @FXML
-    private Button btnConf;
-
-    @FXML
-    private TextField txtNomEst;
-
-    @FXML
     private TextField idInput;
-
-    @FXML
-    private TextField nomeInput;
-
-    @FXML
-    private TextField estudanteId;
 
     @FXML
     private ComboBox<String> disciplinaComboBox; // ComboBox para selecionar disciplinas
@@ -68,81 +56,6 @@ public class EstudanteDisciplinaController {
             alert.setHeaderText("Não foi possível carregar as disciplinas.");
             alert.show();
         }
-    }
-
-
-    @FXML
-    private void btnAlterar(ActionEvent event) {
-        Estudante estudante = new Estudante();
-        estudante.setNome(nomeInput.getText());
-        estudante.setEstudanteID(Integer.parseInt(idInput.getText()));
-
-        try {
-            estudanteDAO.update(estudante);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Estudante alterado com sucesso!", ButtonType.OK);
-            alert.setTitle("Sucesso");
-            alert.setHeaderText("Informação");
-            alert.show();
-        } catch (SQLException e1) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Não foi possível alterar o estudante.", ButtonType.OK);
-            alert.setTitle("Erro");
-            alert.setHeaderText("Informação");
-            alert.show();
-            e1.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void btnRemoverEstudante(ActionEvent event) {
-        try {
-            estudanteDAO.delete(estudanteDAO.consultar(Integer.parseInt(estudanteId.getText())));
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Estudante removido com sucesso!", ButtonType.OK);
-            alert.setTitle("Sucesso");
-            alert.setHeaderText("Informação");
-            alert.show();
-        } catch (SQLException e1) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Não foi possível remover o estudante.", ButtonType.OK);
-            alert.setTitle("Erro");
-            alert.setHeaderText("Informação");
-            alert.show();
-            e1.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void btnAdicionarEstudante(ActionEvent event) {
-        Estudante estudante = new Estudante();
-        estudante.setNome(txtNomEst.getText());
-
-        // Obtém a disciplina selecionada no ComboBox
-        String disciplinaSelecionada = disciplinaComboBox.getValue();
-
-        if (disciplinaSelecionada != null) {
-            try {
-                estudanteDAO.inserir(estudante);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Estudante cadastrado e associado à disciplina " + disciplinaSelecionada + " com sucesso!", ButtonType.OK);
-                alert.setTitle("Sucesso");
-                alert.setHeaderText("Informação");
-                alert.show();
-            } catch (SQLException e1) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Erro ao cadastrar o estudante.", ButtonType.OK);
-                alert.setTitle("Erro");
-                alert.setHeaderText("Informação");
-                alert.show();
-                e1.printStackTrace();
-            }
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Selecione uma disciplina antes de cadastrar o estudante.", ButtonType.OK);
-            alert.setTitle("Aviso");
-            alert.setHeaderText("Informação");
-            alert.show();
-        }
-    }
-
-    @FXML
-    void btnVoltarOnAction(ActionEvent event) {
-        Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stageAtual.close();
     }
 
     @FXML
@@ -193,7 +106,4 @@ public class EstudanteDisciplinaController {
             alert.show();
         }
     }
-
-
-
 }

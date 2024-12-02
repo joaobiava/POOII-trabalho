@@ -15,9 +15,9 @@
 
         <TableView fx:id="tabelaEstudantesDisciplinas" prefHeight="200" prefWidth="500">
             <columns>
-                <TableColumn fx:id="colunaDisciplinaId" text="ID Disciplina" prefWidth="100"/>
                 <TableColumn fx:id="colunaEstudanteId" text="ID Estudante" prefWidth="100"/>
                 <TableColumn fx:id="colunaEstudanteNome" text="Nome estudante" prefWidth="100" />
+                <TableColumn fx:id="colunaDisciplinaId" text="ID Disciplina" prefWidth="100"/>
                 <TableColumn fx:id="colunaDisciplinaNome" text="Nome Disciplina" prefWidth="200"/>
             </columns>
         </TableView>

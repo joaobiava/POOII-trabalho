@@ -15,9 +15,6 @@ import java.sql.SQLException;
 
 public class EstudanteController {
     @FXML
-    private Button btnConf;
-
-    @FXML
     private TextField txtNomEst;
 
     @FXML
@@ -30,8 +27,7 @@ public class EstudanteController {
     private TextField estudanteId;
 
     @FXML
-    public void initialize() {
-    }
+    public void initialize() {}
 
     @FXML
     private void btnAlterar(ActionEvent event) {

@@ -8,13 +8,9 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.GridPane?>
 
-<GridPane xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/22"
-          fx:controller="exemplo.trabalho1.controller.estudanteDisciplina.EstudanteDisciplinaController"
-          prefHeight="600.0" prefWidth="600.0">
-
-    <padding>
-        <Insets top="10" right="10" bottom="10" left="10"/>
-    </padding>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22" fx:controller="exemplo.trabalho1.controller.estudanteDisciplina.EstudanteDisciplinaController">
 
     <!-- Campo de entrada para o ID do Estudante -->
     <Label text="ID do Estudante:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
@@ -28,4 +24,5 @@
     <Button text="Adicionar Estudante à Disciplina"
             onAction="#btnAdicionarEstudanteADisciplina"
             GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-</GridPane>
+
+</VBox>
