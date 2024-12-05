@@ -29,6 +29,14 @@ public class DisciplinaController {
     @FXML
     public void initialize() {}
 
+    private void exibirAlerta(String titulo, String mensagem, Alert.AlertType tipo) {
+        Alert alert = new Alert(tipo, mensagem, ButtonType.OK);
+        alert.setTitle(titulo);
+        alert.setHeaderText("Informação");
+        alert.show();
+    }
+
+
     @FXML
     private void btnIncluir(ActionEvent event) {
         Disciplina disciplina = new Disciplina();
@@ -37,17 +45,9 @@ public class DisciplinaController {
         DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
         try {
             disciplinaDAO.inserir(disciplina);
-            Alert alert;
-            alert = new Alert(Alert.AlertType.INFORMATION, "Você clicou no botão Confirmar", ButtonType.OK);
-            alert.setTitle("Estudante cadastrado com sucesso!");
-            alert.setHeaderText("Informação");
-            alert.show();
+            exibirAlerta("Disciplina cadastrada com sucesso!", "Você clicou no botão Confirmar", Alert.AlertType.INFORMATION);
         } catch (SQLException e1) {
-            Alert alert;
-            alert = new Alert(Alert.AlertType.INFORMATION, "Você clicou no botão Cancelar", ButtonType.OK);
-            alert.setTitle("Estudante não foi cadastrado com sucesso!");
-            alert.setHeaderText("Informação");
-            alert.show();
+            exibirAlerta("Disciplina não cadastrada!", "A disciplina não foi cadastrada!", Alert.AlertType.INFORMATION);
             e1.printStackTrace();
         }
     }
@@ -61,17 +61,9 @@ public class DisciplinaController {
         DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
         try {
             disciplinaDAO.update(disciplina);
-            Alert alert;
-            alert = new Alert(Alert.AlertType.INFORMATION, "Você clicou no botão Confirmar", ButtonType.OK);
-            alert.setTitle("Disciplina Alterado com sucesso!");
-            alert.setHeaderText("Informação");
-            alert.show();
+            exibirAlerta("Disciplina alterada com sucesso!", "Você clicou no botão Confirmar", Alert.AlertType.INFORMATION);
         } catch (SQLException e1) {
-            Alert alert;
-            alert = new Alert(Alert.AlertType.INFORMATION, "Você clicou no botão Cancelar", ButtonType.OK);
-            alert.setTitle("Não foi possivel fazer alterações neste Disciplina");
-            alert.setHeaderText("Informação");
-            alert.show();
+            exibirAlerta("Disciplina não cadastrada!", "Você clicou no botão cancelar", Alert.AlertType.INFORMATION);
             e1.printStackTrace();
         }
     }
@@ -81,17 +73,9 @@ public class DisciplinaController {
         DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
         try {
             disciplinaDAO.delete(disciplinaDAO.consultar(Integer.parseInt(disciplinaId.getText())));
-            Alert alert;
-            alert = new Alert(Alert.AlertType.INFORMATION, "Você clicou no botão Confirmar", ButtonType.OK);
-            alert.setTitle("Disciplina Alterado com sucesso!");
-            alert.setHeaderText("Informação");
-            alert.show();
+            exibirAlerta("Disciplina deletada com sucesso!", "Você clicou no botão Confirmar", Alert.AlertType.INFORMATION);
         } catch (SQLException e1) {
-            Alert alert;
-            alert = new Alert(Alert.AlertType.INFORMATION, "Você clicou no botão Cancelar", ButtonType.OK);
-            alert.setTitle("Não foi possivel fazer alterações neste Disciplina");
-            alert.setHeaderText("Informação");
-            alert.show();
+            exibirAlerta("Disciplina não deletada com sucesso!", "Você clicou no botão Cancelar", Alert.AlertType.INFORMATION);
             e1.printStackTrace();
         }
     }

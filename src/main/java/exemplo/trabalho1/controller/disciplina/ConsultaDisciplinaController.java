@@ -15,20 +15,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ConsultaDisciplinaController {
-    @FXML
-    private Button btnConf;
-
-    @FXML
-    private TextField txtNomEst;
-
-    @FXML
-    private TextField idInput;
-
-    @FXML
-    private TextField nomeInput;
-
-    @FXML
-    private TextField disciplinaId;
 
     @FXML
     private TextField disciplinaIdField;
@@ -56,23 +42,6 @@ public class ConsultaDisciplinaController {
             List<Disciplina> disciplinas = disciplinaDAO.listar(); // Método que lista todos os estudantes
             ObservableList<Disciplina> observableDisciplinas = FXCollections.observableArrayList(disciplinas);
             tabelaDisciplina.setItems(observableDisciplinas);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void handleBuscarPorId() {
-        try {
-            int disciplinaId = Integer.parseInt(disciplinaIdField.getText());
-            Disciplina disciplina = disciplinaDAO.consultar(disciplinaId);
-            if (disciplina != null) {
-                tabelaDisciplina.setItems(FXCollections.observableArrayList(disciplina));
-            } else {
-                tabelaDisciplina.setItems(FXCollections.observableArrayList());
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("ID inválido.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
