@@ -1,6 +1,5 @@
 package exemplo.trabalho1.controller.estudante;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -28,24 +27,22 @@ public class ConsultaEstudanteController {
     @FXML
     private TableColumn<Estudante, String> colunaNome;
 
-    private EstudanteDAO estudanteDAO = new EstudanteDAO();
+    private final EstudanteDAO estudanteDAO = new EstudanteDAO();
 
     @FXML
     private void initialize() {
-        colunaId.setCellValueFactory(dadoLinha -> {
-            String estudanteId = Integer.toString(dadoLinha.getValue().getEstudanteID());
-            return new SimpleStringProperty(estudanteId);
-        });
         colunaId.setCellValueFactory(new PropertyValueFactory<>("estudanteID"));
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+    }
+
+    private void atualizarTabela(List<Estudante> estudantes) {
+        tabelaEstudantes.setItems(FXCollections.observableArrayList(estudantes));
     }
 
     @FXML
     private void handleCarregarEstudantes() {
         try {
-            List<Estudante> estudantes = estudanteDAO.listar(); // Método que lista todos os estudantes
-            ObservableList<Estudante> observableEstudantes = FXCollections.observableArrayList(estudantes);
-            tabelaEstudantes.setItems(observableEstudantes);
+            atualizarTabela(estudanteDAO.listar());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -53,16 +50,15 @@ public class ConsultaEstudanteController {
 
     @FXML
     private void handleBuscarPorNome() {
+        String nome = studentIdField.getText().trim();
+        if (nome.isEmpty()) {
+            System.err.println("O campo de nome não pode estar vazio.");
+            return;
+        }
+
         try {
-            String nome = (studentIdField.getText());
             Estudante estudante = estudanteDAO.consultarPorNome(nome);
-            if (estudante != null) {
-                tabelaEstudantes.setItems(FXCollections.observableArrayList(estudante));
-            } else {
-                tabelaEstudantes.setItems(FXCollections.observableArrayList());
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Nome Inválio");
+            atualizarTabela(estudante != null ? List.of(estudante) : List.of());
         } catch (SQLException e) {
             e.printStackTrace();
         }
