@@ -4,9 +4,7 @@ public class Disciplina {
     private int disciplina_id;
     private String nome;
 
-    public Disciplina() {
-
-    }
+    public Disciplina() {}
 
     public Disciplina(int disciplina_id, String nome) {
         this.disciplina_id = disciplina_id;
