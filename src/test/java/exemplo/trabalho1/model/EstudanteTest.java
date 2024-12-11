@@ -9,11 +9,12 @@ class EstudanteTest {
     @Test
     void getEstudanteID() {
         Estudante estudante1 = new Estudante();
-        Estudante estudante2 = estudante1;
+        Estudante estudante2 = new Estudante();
 
         estudante1.setEstudanteID(34);
+        estudante2.setEstudanteID(36);
 
-        assertSame(estudante1, estudante2, "O Id deve ser o mesmo");
+        assertTrue(estudante1.getEstudanteID() != estudante2.getEstudanteID(), "O Id deve ser diferente");
     }
 
     @Test
@@ -28,13 +29,13 @@ class EstudanteTest {
         Estudante estudante = new Estudante();
         estudante.setNome("batata");
 
-        assertNotNull(estudante.getNome());
+        assertNotNull(estudante.getNome(), "O nome do estudante nao pode ser nulo");
     }
 
     @Test
     void setNome() {
         Estudante estudante = new Estudante();
         estudante.setNome("");
-        assertFalse(estudante.getNome() != null && estudante.getNome().isEmpty(), "O estudante não deve ser válida se for null.");
+        assertFalse(estudante.getNome() != null && estudante.getNome().isEmpty(), "O estudante não deve ser válida se o nome for null.");
     }
 }
