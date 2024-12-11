@@ -9,11 +9,12 @@ class DisciplinaTest {
     @Test
     void getDisciplina_id() {
         Disciplina disciplina1 = new Disciplina();
-        Disciplina disciplina2 = disciplina1;
+        Disciplina disciplina2 = new Disciplina();
 
+        disciplina2.setDisciplina_id(1);
         disciplina1.setDisciplina_id(1);
 
-        assertSame(disciplina1, disciplina2, "Ambos devem se referir ao mesmo id");
+        assertNotSame(disciplina1.getDisciplina_id(), disciplina2.getDisciplina_id(), "Ambos devem se referir a id diferentes");
     }
 
     @Test
@@ -33,7 +34,7 @@ class DisciplinaTest {
         disciplina1.setNome("abacate");
         Disciplina disciplina2 = disciplina1;
 
-        assertSame(disciplina1, disciplina2, "Os nomes das disciplinas devem ser iguais");
+        assertNotSame(disciplina1.getNome(), disciplina2.getNome(), "Os nomes das disciplinas devem ser diferentes");
     }
 
     @Test
